@@ -11,20 +11,18 @@ class TempusDominusMixin(object):
     class Media:
         css = {
             'all': (
-                '//cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.0.1/css/tempusdominus-bootstrap-4.min.css',
+                '//rawgit.com/tempusdominus/bootstrap-4/master/build/css/tempusdominus-bootstrap-4.min.css',
             ),
         }
         js = (
-            '//cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js',
-            '//cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.0.1/js/tempusdominus-bootstrap-4.min.js',
+            '//cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js',
+            '//rawgit.com/tempusdominus/bootstrap-4/master/build/js/tempusdominus-bootstrap-4.min.js',
         )
 
     html_template = """
         <input type="{type}" name="{name}"{value}{attrs} data-toggle="datetimepicker" data-target="#{picker_id}" id="{picker_id}">
         <script type="text/javascript">
-            $(function () {{
-                $('#{picker_id}').datetimepicker({js_options});
-            }});
+            $('#{picker_id}').datetimepicker({js_options});
         </script>
     """
 
