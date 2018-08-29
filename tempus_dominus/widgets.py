@@ -20,9 +20,11 @@ class TempusDominusMixin(object):
         )
 
     html_template = """
-        <input type="{type}" name="{name}"{value}{attrs} data-toggle="datetimepicker" data-target="#{picker_id}" id="{picker_id}">
+        <input type="{type}" name="{name}" value="{value}" {attrs} data-toggle="datetimepicker" data-target="#{picker_id}" id="{picker_id}">
         <script type="text/javascript">
-            $('#{picker_id}').datetimepicker({js_options});
+            $(function() {
+                $('#{picker_id}').datetimepicker({js_options});
+            }
         </script>
     """
 
@@ -51,7 +53,7 @@ class TempusDominusMixin(object):
             type=context['widget']['type'],
             picker_id=context['widget']['attrs']['id'],
             name=context['widget']['name'],
-            value='',
+            value='' if not context['widget']['value'] else context['widget']['value'],
             attrs=attr_html,
             js_options=options,
         )
